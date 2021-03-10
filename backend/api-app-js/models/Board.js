@@ -6,7 +6,7 @@ const boardSchema = new Schema({
     list_tasks: [{type: Schema.Types.ObjectId, ref:'list-task', autopopulate: true  }]
 });
 
-schema.plugin(require('mongoose-autopopulate'));
+boardSchema.plugin(require('mongoose-autopopulate'));
 
 const Board = moongose.model('Board', boardSchema);
 module.exports = Board;

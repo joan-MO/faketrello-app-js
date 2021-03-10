@@ -6,7 +6,7 @@ const listTaskSchema = new Schema({
     card_tasks: [{type: Schema.Types.ObjectId, ref:'card-task', autopopulate: true  }]
 });
 
-schema.plugin(require('mongoose-autopopulate'));
+listTaskSchema.plugin(require('mongoose-autopopulate'));
 
 const ListTask = moongose.model('list-task', listTaskSchema);
 module.exports = ListTask;
