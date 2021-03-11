@@ -1,13 +1,15 @@
 var express = require('express');
 const Board = require('../../models/board');
 var router = express.Router();
+const validate = require('../../utils/validateData');
+
 
 router.get('/', async (req, res, next) => {
   const result = await Board.find();
   res.json(result);
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/', validate(Board), async (req, res, next) => {
   const { title } = req.body;
   const newBoard = new Board ({title});
 
