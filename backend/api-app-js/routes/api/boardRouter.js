@@ -54,9 +54,9 @@ router.post('/', validate(boardSchemaValidation), async (req, res, next) => {
   try {
 
     const { title } = req.body;
-    const newBoard = new Board ({title});
-  
-    const boardCreate = await newBoard.save();
+    const newBoard = new Board({title});
+    
+    await newBoard.save();
   
     res.status(201).json({ result: newBoard});
 
@@ -86,20 +86,20 @@ router.put('/:_id', validate(boardSchemaValidation), async(req, res, next) => {
 
 })
 
-router.put('/assignListTask/:_id', async (req, res) => {
+router.put('/assignListTask/:_id', async (req, res, next) => {
 
   try {
 
     const { _id } = req.params;
-    const { list_task } = req.body;
-    const updatedBoard = await studentsModel.findByIdAndUpdate(_id, {$push: { list_task: list_task}}, { useFindAndModify: false})
+    const { list_tasks } = req.body;
+    const updatedBoard = await Board.findByIdAndUpdate(_id, {$push: { list_tasks: list_tasks}}, { useFindAndModify: false})
 
     if (!updatedBoard) {
       res.status(404).json({ error: 'not found' });
       return;
     }
   
-    res.json({ result: updatedBoard.title });
+    res.json(`${updatedBoard.title} updated`);
     
   } catch (error) {
     next(error); 
