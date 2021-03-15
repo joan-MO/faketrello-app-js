@@ -58,14 +58,13 @@ router.post('/', validate(cardTaskSchemaValidation), async (req, res, next) => {
 
 })
 
-router.put('/:_id', validate(cardTaskSchemaValidation), async(req, res, next) => {
+router.put('/:_id', async(req, res, next) => {
 
   try {
     const { _id } = req.params;
-    const { title } = req.body;
-    const { description } = req.body
-    const updateCardTask = await CardTask.findByIdAndUpdate(_id, {$set:{ title, description }}, { useFindAndModify: false} )
-    
+    const cardTaskData = req.body
+    const updateCardTask = await CardTask.findByIdAndUpdate({ _id: _id }, {cardTaskData}, {new: true, useFindAndModify: false} )
+
     if (!updateCardTask) {
       res.status(404).json({ error: 'not found' });
       return;
