@@ -63,8 +63,9 @@ router.put('/:_id', async(req, res, next) => {
   try {
     const { _id } = req.params;
     const cardTaskData = req.body
-    const updateCardTask = await CardTask.findByIdAndUpdate({ _id: _id }, {cardTaskData}, {new: true, useFindAndModify: false} )
+    const updateCardTask = await CardTask.findByIdAndUpdate({ _id: _id }, cardTaskData, {new: true, useFindAndModify: false} )
 
+    
     if (!updateCardTask) {
       res.status(404).json({ error: 'not found' });
       return;
