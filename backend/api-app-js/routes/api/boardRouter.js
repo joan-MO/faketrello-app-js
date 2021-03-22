@@ -107,6 +107,27 @@ router.put('/assignListTask/:_id', async (req, res, next) => {
 
 });
 
+router.put('/removeListTask/:_id', async (req, res, next) => {
+
+  try {
+
+    const { _id } = req.params;
+    const { list_tasks } = req.body;
+    const updatedBoard = await Board.findByIdAndUpdate(_id, {$pull: { list_tasks: list_tasks}}, { useFindAndModify: false})
+
+    if (!updatedBoard) {
+      res.status(404).json({ error: 'not found' });
+      return;
+    }
+  
+    res.json(`${updatedBoard.title} updated`);
+    
+  } catch (error) {
+    next(error); 
+  }
+
+});
+
 router.delete('/:_id', async (req, res, next) => {
   try {
 
@@ -119,7 +140,5 @@ router.delete('/:_id', async (req, res, next) => {
   }
 
 });
-
-
 
 module.exports = router;

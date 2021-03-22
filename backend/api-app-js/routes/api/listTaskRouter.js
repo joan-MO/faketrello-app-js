@@ -108,6 +108,26 @@ router.put('/assignCardTask/:_id', async (req, res, next) => {
 
 });
 
+router.put('/removeCardTask/:_id', async (req, res, next) => {
+
+  try {
+
+    const { _id } = req.params;
+    const { card_tasks } = req.body;
+    const updatedListTask = await ListTask.findByIdAndUpdate(_id, {$pull: { card_tasks: card_tasks}}, { useFindAndModify: false})
+
+    if (!updatedListTask) {
+      res.status(404).json({ error: 'not found' });
+      return;
+    }
+  
+    res.json(`${updatedListTask.title} updated`);
+    
+  } catch (error) {
+    next(error); 
+  }
+
+});
 
 
 module.exports = router;
