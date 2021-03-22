@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var boardRouter = require('./routes/api/boardRouter');
 var listTaskRouter = require('./routes/api/listTaskRouter');
 var cardTaskRouter = require('./routes/api/cardTaskRouter');
-
+var userRouter = require('./routes/api/userRouter');
 
 var app = express();
 
@@ -29,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/apiv1/boards', boardRouter);
 app.use('/apiv1/list-tasks', listTaskRouter);
 app.use('/apiv1/card-tasks', cardTaskRouter);
+app.use('/apiv1/users', userRouter);
+
 
 
 // Browser routers

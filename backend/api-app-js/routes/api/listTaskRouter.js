@@ -3,9 +3,9 @@ const ListTask = require('../../models/ListTask');
 const listTaskSchemaValidation = require('../../utils/schemas/listTask')
 var router = express.Router();
 const validate = require('../../utils/validateData');
+const validationAuth = require('../../utils/validateAuth')
 
-
-router.get('/', async (req, res, next) => {
+router.get('/', validationAuth, async (req, res, next) => {
 
   try {
 
@@ -32,7 +32,7 @@ router.get('/', async (req, res, next) => {
   
 });
 
-router.get('/:_id', async (req, res, next) => {
+router.get('/:_id', validationAuth, async (req, res, next) => {
   try {
     const _id = req.params._id;
 
@@ -49,7 +49,7 @@ router.get('/:_id', async (req, res, next) => {
 });
 
 
-router.post('/', validate(listTaskSchemaValidation), async (req, res, next) => {
+router.post('/', validationAuth, validate(listTaskSchemaValidation), async (req, res, next) => {
 
   try {
 
@@ -66,7 +66,7 @@ router.post('/', validate(listTaskSchemaValidation), async (req, res, next) => {
 
 })
 
-router.put('/:_id', validate(listTaskSchemaValidation), async(req, res, next) => {
+router.put('/:_id', validationAuth, validate(listTaskSchemaValidation), async(req, res, next) => {
 
   try {
     const { _id } = req.params;
@@ -87,7 +87,7 @@ router.put('/:_id', validate(listTaskSchemaValidation), async(req, res, next) =>
 
 })
 
-router.put('/assignCardTask/:_id', async (req, res, next) => {
+router.put('/assignCardTask/:_id', validationAuth, async (req, res, next) => {
 
   try {
 
@@ -108,7 +108,7 @@ router.put('/assignCardTask/:_id', async (req, res, next) => {
 
 });
 
-router.put('/removeCardTask/:_id', async (req, res, next) => {
+router.put('/removeCardTask/:_id', validationAuth, async (req, res, next) => {
 
   try {
 
