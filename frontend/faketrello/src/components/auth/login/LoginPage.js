@@ -22,7 +22,7 @@ const LoginPage = () => {
                 <div className="col d-flex justify-content-center">
                     <div className="card p-5" style={{width:"25rem",height:'400px', marginTop:'30%'}}>
                         <div className="card-body">
-                            <h5 className="card-title text-center mb-4">Login Page</h5>
+                            <h5 className="card-title text-center mb-4">Login in Faketrello</h5>
                             <LoginForm onSubmit={handleSubmit}/>
                             {error && (
                                 <p className="bg-danger text-center"
