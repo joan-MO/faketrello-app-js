@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -11,6 +12,8 @@ var cardTaskRouter = require('./routes/api/cardTaskRouter');
 var userRouter = require('./routes/api/userRouter');
 
 var app = express();
+app.use(cors())
+
 
 require('./lib/connectMongoose');
 

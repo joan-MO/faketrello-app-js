@@ -2,7 +2,6 @@ import React from 'react';
 import BoardList from './components/private/boards/boardsList/BoardList';
 import LoginPage from './components/auth/login/LoginPage';
 import NotFoundPage from './components/errors/NotFoundPage';
-
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 
