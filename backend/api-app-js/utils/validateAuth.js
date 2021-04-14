@@ -10,7 +10,7 @@ module.exports = (req, res,next) => {
         next();
        
     } catch (error) {
-        return res.send(Boom.forbidden('Unauthorized'));
+        return res.send(error);
         //next(error);
     }
 }
