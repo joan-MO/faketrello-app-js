@@ -1,4 +1,5 @@
 import React from 'react';
+import BoardContent from './components/private/BoardContent/BoardContent';
 import BoardList from './components/private/boards/boardsList/BoardList';
 import LoginPage from './components/auth/login/LoginPage';
 import NotFoundPage from './components/errors/NotFoundPage';
@@ -9,6 +10,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path='/content-board'>
+          <BoardContent />
+        </Route>
           <Route path="/login" >
             <LoginPage />
           </Route>

@@ -1,6 +1,7 @@
 import React from 'react';
 import CardBoards from '../../../shared/cardBoards';
-import EmptyBoards from './EmptyBoards'
+import EmptyBoards from './EmptyBoards';
+import Header from '../../../shared/Header';
 //import { getBoards } from '../../../../api/service';
 // import { useHistory } from 'react-router-dom';
 //import axios from 'axios';
@@ -81,12 +82,14 @@ const BoardList = () => {
     //console.log(boards);
   */
 
-    return (
-        <div className="container">
-            <h1>Tableros personales</h1>
-        {boards.length ? <CardBoards boards={ boards }/> : <EmptyBoards/>}
+  return (
+      <div>
+        <Header />
+        <div className="container mt-5">
+            <h3>Tableros personales</h3>
+            {boards.length ? <CardBoards boards={ boards } /> : <EmptyBoards/>}
         </div>
-       
+      </div>
     )
 }
 

@@ -1,0 +1,9 @@
+.clean-styles {
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+}
+
+.clean-styles:hover {
+  color: white;
+}

@@ -1,8 +1,11 @@
 import React from 'react';
+import Header from '../../shared/Header'
 
 const BoardContent = () => {
     return (
-        <h1>Board Content</h1>
+        <div>
+            <Header />
+        </div>
     )
 }
 
