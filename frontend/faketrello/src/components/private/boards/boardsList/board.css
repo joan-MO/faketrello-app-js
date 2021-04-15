@@ -1,0 +1,12 @@
+.title-board,
+.title-newboard {
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  max-height: 40px;
+  word-wrap: break-word;
+}
+
+.title-newboard {
+  color: white;
+}

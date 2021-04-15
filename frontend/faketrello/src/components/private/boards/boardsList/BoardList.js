@@ -1,18 +1,32 @@
 import React from 'react';
-import { getBoards } from '../../../../api/service';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-let token = JSON.parse(localStorage.getItem("auth"))
-
+import CardBoards from '../../../shared/cardBoards';
+import EmptyBoards from './EmptyBoards'
+//import { getBoards } from '../../../../api/service';
+// import { useHistory } from 'react-router-dom';
+//import axios from 'axios';
+//let token = JSON.parse(localStorage.getItem("auth"))
+const fakedata = [
+    {
+        "list_tasks": [],
+        "_id": "1",
+        "title": "test1",
+    },
+    {
+        "list_tasks": [],
+        "_id": "2",
+        "title": "test2",
+    },
+    
+]
 
 
 const BoardList = () => {
-    const [boards, setBoards] = React.useState({});
+    const [boards, setBoards] = React.useState(fakedata);
 
-    const history = useHistory();
+    //const history = useHistory();
 
     //React.useEffect(() => { document.body.style.backgroundColor = 'white' }, []);
-    const [error, setError] = React.useState(null);
+    // const [error, setError] = React.useState(null);
 
 
   React.useEffect(() => {
@@ -24,14 +38,14 @@ const BoardList = () => {
       //return data
         //console.log(boards);
         
-      
+      /*
         axios.get(`${process.env.REACT_APP_API_BASE_URL}/apiv1/boards`,{
         headers: {
           Authorization: `Bearer ${token}`
         }
         }).then(data => { console.log(data.data); })
       
-         
+       */  
         /*
       const execute = async () => {
         const result = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/apiv1/boards`, {
@@ -45,9 +59,10 @@ const BoardList = () => {
       }
 
       execute()*/
-      
-    })
+
+    },[])
   
+  /*
     const listBoard = async() => {
       const result = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/apiv1/boards`, {
           headers: {
@@ -64,10 +79,12 @@ const BoardList = () => {
     }
   
     //console.log(boards);
+  */
 
     return (
-        <div>
-           
+        <div className="container">
+            <h1>Tableros personales</h1>
+        {boards.length ? <CardBoards boards={ boards }/> : <EmptyBoards/>}
         </div>
        
     )

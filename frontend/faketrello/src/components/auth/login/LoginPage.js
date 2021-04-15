@@ -11,7 +11,7 @@ const LoginPage = () => {
 
     const history = useHistory();
 
-    React.useEffect(() => { document.body.style.backgroundColor = 'rgb(0, 120, 233)' }, []) 
+    //React.useEffect(() => { document.body.style.backgroundColor = 'rgb(0, 120, 233)' }, []) 
 
     const handleSubmit = async credentials => {
         resetError();
