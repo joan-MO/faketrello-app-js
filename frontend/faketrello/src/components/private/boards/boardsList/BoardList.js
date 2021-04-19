@@ -17,12 +17,19 @@ const fakedata = [
         "_id": "2",
         "title": "test2",
     },
-    
+    {
+        "list_tasks": [],
+        "_id": "3",
+        "title": "test3",
+    },
 ]
 
 
 const BoardList = () => {
-    const [boards, setBoards] = React.useState(fakedata);
+  const [boards, setBoards] = React.useState(fakedata);
+  const [search, setSearch] = React.useState("");
+  const [filteredBoards, setFilteredBoards] = React.useState([]);
+
 
     //const history = useHistory();
 
@@ -31,7 +38,6 @@ const BoardList = () => {
 
 
   React.useEffect(() => {
- 
     //listBoard()
       //getBoards().then(setBoards).catch(error => setError(error));
       //const data = getBoards();
@@ -81,13 +87,24 @@ const BoardList = () => {
   
     //console.log(boards);
   */
+  
+  React.useEffect(() => {
+    setFilteredBoards(
+      boards.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [search, boards]);
+  
+
+
 
   return (
       <div>
-        <Header />
-        <div className="container mt-5">
+      <Header handleChange={event => setSearch(event.target.value)}/>
+      <div className="container mt-5">
             <h3>Tableros personales</h3>
-            {boards.length ? <CardBoards boards={ boards } /> : <EmptyBoards/>}
+            {filteredBoards.length ? <CardBoards boards={ filteredBoards } /> : <EmptyBoards/>}
         </div>
       </div>
     )

@@ -16,8 +16,8 @@ const CardBoards = ({boards}) => {
                 </Link>
             </div>
             )}
-            <div className="col-6 mt-2">
-                <div className="card btn bg-primary" style={{ width: "219.2px", height: "96px" }}>
+            <div className="col-6">
+                <div className="card btn bg-primary mt-4" style={{ width: "219.2px", height: "96px" }}>
                     <div className="card-body">
                         <p className="card-title title-newboard p-3 text-center">add new board</p>
                     </div>

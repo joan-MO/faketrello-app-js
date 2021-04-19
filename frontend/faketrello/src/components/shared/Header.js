@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.css'
+import Search from './Search'
 
-const Header = () => {
+const Header = ({handleChange}) => {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Link to="/" className="clean-styles" >
@@ -10,9 +11,7 @@ const Header = () => {
                 <h1>Home</h1>
             </div>
         </Link>
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        </form>
+        <Search handleChange={handleChange}/>
       </nav>
 
     )
