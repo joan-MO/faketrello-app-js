@@ -20,7 +20,7 @@ const CardBoards = ({ boards }) => {
             {boards.map(board =>
             <div className="col-6" key={board._id}>
                 <Link to={"/content-board/"+board._id} className="clean">
-                <div className="card" style={{ width: "219.2px", height: "96px" }}>
+                <div className="card mt-2" style={{ width: "219.2px", height: "96px" }}>
                     <div className="card-body">
                         <p className="card-title title-board">{board.title}</p>
                     </div>
@@ -29,7 +29,7 @@ const CardBoards = ({ boards }) => {
             </div>
             )}
             <div className="col-6">
-                <div className="card btn bg-primary mt-4" style={{ width: "219.2px", height: "96px" }} onClick={handleShow}>
+                <div className="card btn bg-primary mt-2" style={{ width: "219.2px", height: "96px" }} onClick={handleShow}>
                     <div className="card-body">
                         <p className="card-title title-newboard p-3 text-center">add new board</p>
                     </div>
