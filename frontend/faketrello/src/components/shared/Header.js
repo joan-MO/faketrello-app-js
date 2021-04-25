@@ -5,7 +5,7 @@ import Search from './Search'
 
 const Header = ({handleChange}) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <Link to="/" className="clean-styles" >
             <div className="header-logo">
                 <h1>Home</h1>
