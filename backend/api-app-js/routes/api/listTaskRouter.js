@@ -41,7 +41,7 @@ router.get('/:_id', async (req, res, next) => {
     if (!listTask) {
       return res.status(404).json({ error: 'not found' });
     }
-    res.json({ result: listTask });
+    res.json(listTask);
 
   } catch (err) {
     next(err);

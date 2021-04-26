@@ -42,7 +42,7 @@ router.get('/:_id', async (req, res, next) => {
     if (!board) {
       return res.status(404).json({ error: 'not found' });
     }
-    res.json({ result: board });
+    res.json(board);
 
   } catch (err) {
     next(err);

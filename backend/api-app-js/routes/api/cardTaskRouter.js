@@ -32,7 +32,7 @@ router.get('/:_id', async (req, res, next) => {
     if (!cardTask) {
       return res.status(404).json({ error: 'not found' });
     }
-    res.json({ result: cardTask });
+    res.json(cardTask);
 
   } catch (err) {
     next(err);

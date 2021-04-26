@@ -2,18 +2,38 @@ import React from 'react';
 import '../../components/private/boards/boardsList/board.css'
 import NewBoards from '../private/boards/newBoards/NewBoards'
 import { Link } from 'react-router-dom';
+import { createBoard } from '../../api/service'
+import { useHistory } from 'react-router-dom';
+
 
 const CardBoards = ({ boards }) => {
     const [show, setShow] = React.useState(false);
+    const [error, setError] = React.useState(null);
+    const [createdBoard, setCreatedBoard] = React.useState(null);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const history = useHistory();
 
     
-    const handleSubmit = content => {
-        boards.push(content);
-        handleClose();
+    const handleSubmit = async content => {
+        try {
+            const newBoard = await createBoard(content);
+            setCreatedBoard(newBoard);
+            handleClose();
+        } catch (error) {
+            setError(error);
+        }
+        //boards.push(content);
+        
     };
 
+    if (error && error.status === 401) {
+        history.push('/404');
+    }
+
+    if (createdBoard) {
+        history.push('/boards');
+    }
    
     return (
         <div className="row">

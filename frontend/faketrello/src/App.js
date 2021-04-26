@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path='/content-board'>
+        <Route path='/content-board/:_id'>
           <BoardContent />
         </Route>
           <Route path="/login" >

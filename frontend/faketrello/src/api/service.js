@@ -1,18 +1,17 @@
 import client from './client'
-//import axios from 'axios';
-
-let token = JSON.parse(localStorage.getItem("auth"))
-
 const api_url = `/apiv1`;
 
 export const getBoards = () => {
   let url = `${api_url}/boards`;
-  return client.get(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return client.get(url)
+};
 
-  //console.log(data);
+export const getBoardById = (_id) => {
+  let url = `${api_url}/boards/${_id}`;
+  return client.get(url)
+};
 
+export const createBoard = board => {
+  const url = `${api_url}/boards`;
+  return client.post(url, board);    
 };
