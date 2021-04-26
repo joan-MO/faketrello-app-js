@@ -5,7 +5,7 @@ var router = express.Router();
 const validate = require('../../utils/validateData');
 const validationAuth = require('../../utils/validateAuth')
 
-router.get('/', validationAuth, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 
   try {
 
@@ -23,7 +23,7 @@ router.get('/', validationAuth, async (req, res, next) => {
   
 });
 
-router.get('/:_id', validationAuth, async (req, res, next) => {
+router.get('/:_id', async (req, res, next) => {
   try {
     const _id = req.params._id;
 
@@ -40,7 +40,7 @@ router.get('/:_id', validationAuth, async (req, res, next) => {
 });
 
 
-router.post('/', validationAuth, validate(cardTaskSchemaValidation), async (req, res, next) => {
+router.post('/', async (req, res, next) => {
 
   try {
 
@@ -58,7 +58,7 @@ router.post('/', validationAuth, validate(cardTaskSchemaValidation), async (req,
 
 })
 
-router.put('/:_id', validationAuth, async(req, res, next) => {
+router.put('/:_id', async(req, res, next) => {
 
   try {
     const { _id } = req.params;
@@ -79,7 +79,7 @@ router.put('/:_id', validationAuth, async(req, res, next) => {
 
 })
 
-router.delete('/:_id', validationAuth, async (req, res, next) => {
+router.delete('/:_id', async (req, res, next) => {
   try {
 
     const { _id } = req.params;

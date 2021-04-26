@@ -11,6 +11,6 @@ mongoose.connection.once('open', () => {
     console.log('Connect to MongoDB in', mongoose.connection.name);
 })
 
-mongoose.connect('mongodb://localhost:27017/faketrello', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/faketrello', {useNewUrlParser: true, useUnifiedTopology: true,   useCreateIndex: true});
 
 module.exports = mongoose.connection;
