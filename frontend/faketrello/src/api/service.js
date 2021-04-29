@@ -15,3 +15,13 @@ export const createBoard = board => {
   const url = `${api_url}/boards`;
   return client.post(url, board);    
 };
+
+export const createTask = task => {
+  const url = `${api_url}/list-tasks`;
+  return client.post(url, task);    
+};
+
+export const assignTaksinBoard = (_id, _idTask) => {
+  const url = `${api_url}/boards/assignListTask/${_id}`;
+  return client.put(url, {"list_tasks":_idTask})    
+};
