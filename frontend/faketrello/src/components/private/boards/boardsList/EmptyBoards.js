@@ -2,7 +2,7 @@ import React from 'react';
 import './board.css'
 import NewBoards from '../newBoards/NewBoards'
 import { createBoard } from '../../../../api/service'
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const EmptyBoard = () => {
     const [show, setShow] = React.useState(false);

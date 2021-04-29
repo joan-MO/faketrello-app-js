@@ -3,7 +3,7 @@ import '../../components/private/boards/boardsList/board.css'
 import NewBoards from '../private/boards/newBoards/NewBoards'
 import { Link } from 'react-router-dom';
 import { createBoard } from '../../api/service'
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 const CardBoards = ({ boards }) => {
