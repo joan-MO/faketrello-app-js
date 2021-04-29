@@ -1,14 +1,28 @@
 import React from 'react';
 import NewTask from '../newTasks/NewTaks'
+import {createTask, assignTaksinBoard} from '../../../../api/service'
+import { useParams } from 'react-router-dom';
+import EmptyTask from '../../boards/taskList/EmptyTasks'
+
 
 
 const TaskList = ({taskList}) => {
 
-    const Submit = content => {
-        taskList.push(content);
+    const params = useParams();
+    const _id = params._id;
+
+    const Submit = async content => {
+        
+        const newTask = await createTask(content)
+
+        const _idTask = newTask.result['_id'];
+        
+        await assignTaksinBoard(_id, _idTask );
     }
 
     return (
+        <div>
+        {taskList.length ? 
         <div style={{marginLeft:"15px"}} className="mt-5">
             {taskList.map(task =>
             <div key={task._id}>
@@ -19,7 +33,9 @@ const TaskList = ({taskList}) => {
                 </div>
             </div>
             )}
-            <NewTask onSubmit={Submit} />
+            <NewTask onSubmit={Submit} />     
+        </div>
+        :<EmptyTask />}
         </div>
     )
 }

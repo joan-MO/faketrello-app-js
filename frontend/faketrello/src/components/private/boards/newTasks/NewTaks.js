@@ -6,7 +6,6 @@ const NewTasks = ({onSubmit}) => {
 
     const [content, setContent] = React.useState({
         title: '',
-        _id: 3 ,
     });
 
   
