@@ -6,14 +6,6 @@ import { useParams } from 'react-router-dom';
 import { getBoardById } from '../../../api/service';import { Redirect } from 'react-router';
 
 
-const fakedata = 
-    {
-        "list_tasks": [{'title':'todo', '_id':1},{'title':'doing', '_id':2}],
-        "_id": "1",
-        "title": "test1",
-    }
-
-
 const BoardContent = () => {
     const [boardContent, setBoardContent] = React.useState([]);
     const [error, setError] = React.useState(null);
@@ -29,12 +21,13 @@ const BoardContent = () => {
     if (error && error.status === 404) {
         return <Redirect to="/404" />;
     }
-
+ 
     return (
         <div>
             <Header />
-            <h1>{boardContent.title}</h1>
-            { boardContent.list_tasks ? <TaskList taskList={ boardContent.list_tasks} /> : <EmptyTask taskList={fakedata.list_tasks}/>}
+            <h1 style={{marginLeft: '20px'}}>{boardContent.title}</h1>
+    
+            {Object.keys(boardContent).length? <TaskList taskList={ boardContent.list_tasks} /> : <EmptyTask/>}
         </div>
     )
 }

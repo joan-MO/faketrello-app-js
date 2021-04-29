@@ -3,14 +3,13 @@ import CardBoards from '../../../shared/cardBoards';
 import EmptyBoards from './EmptyBoards';
 import Header from '../../../shared/Header';
 import { getBoards } from '../../../../api/service';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const BoardList = () => {
   const [boards, setBoards] = React.useState([]);
   const [search, setSearch] = React.useState("");
   const [filteredBoards, setFilteredBoards] = React.useState([]);
 
-  const history = useHistory();
 
   const [error, setError] = React.useState(null);
 
@@ -27,7 +26,7 @@ const BoardList = () => {
   }, [search, boards]);
   
   if (error) {
-    history.push('/login');
+    <Redirect to='/login' />
   }
 
   return (
