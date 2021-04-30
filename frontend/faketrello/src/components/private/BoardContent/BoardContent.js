@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../../shared/Header'
 import TaskList from '../boards/taskList/TaskList';
-import EmptyTask from '../boards/taskList/EmptyTasks'
 import { useParams } from 'react-router-dom';
 import { getBoardById } from '../../../api/service';import { Redirect } from 'react-router';
+import {createTask, assignTaksinBoard} from '../../../api/service'
 
 
 const BoardContent = () => {
@@ -17,6 +17,19 @@ const BoardContent = () => {
      
     },[_id])
 
+    
+    const Submit = async content => {
+        
+        const newTask = await createTask(content)
+
+        const _idTask = newTask.result['_id'];
+        
+        await assignTaksinBoard(_id, _idTask );
+
+        window.location.reload();
+
+    }
+
 
     if (error && error.status === 404) {
         return <Redirect to="/404" />;
@@ -27,7 +40,7 @@ const BoardContent = () => {
             <Header />
             <h1 style={{marginLeft: '20px'}}>{boardContent.title}</h1>
     
-            {Object.keys(boardContent).length? <TaskList taskList={ boardContent.list_tasks} /> : <EmptyTask/>}
+            <TaskList taskList={ boardContent.list_tasks} onSubmit={Submit}/>
         </div>
     )
 }

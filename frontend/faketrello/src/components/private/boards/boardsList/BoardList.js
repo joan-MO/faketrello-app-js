@@ -4,6 +4,8 @@ import EmptyBoards from './EmptyBoards';
 import Header from '../../../shared/Header';
 import { getBoards } from '../../../../api/service';
 import { Redirect } from 'react-router-dom';
+import { createBoard } from '../../../../api/service'
+
 
 const BoardList = () => {
   const [boards, setBoards] = React.useState([]);
@@ -15,8 +17,32 @@ const BoardList = () => {
 
   React.useEffect(() => {
       getBoards().then(setBoards).catch(error => setError(error));
-  },[])
+      
+      setFilteredBoards(
+        boards.filter((item) =>
+          item.title.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+  },[search, boards])
+
+  /*
+
+  const handleSubmit = async content => {
+    try {
+
+        await createBoard(content);
+
+        handleClose();
+
+        //history.push('/')
+            
+    } catch (error) {
+        setError(error);
+    }
+    
+};*/
   
+  /*
   React.useEffect(() => {
     setFilteredBoards(
       boards.filter((item) =>
@@ -24,9 +50,11 @@ const BoardList = () => {
       )
     );
   }, [search, boards]);
+  */
   
   if (error) {
     <Redirect to='/login' />
+    return;
   }
 
   return (

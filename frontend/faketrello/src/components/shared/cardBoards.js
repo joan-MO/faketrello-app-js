@@ -3,7 +3,7 @@ import '../../components/private/boards/boardsList/board.css'
 import NewBoards from '../private/boards/newBoards/NewBoards'
 import { Link } from 'react-router-dom';
 import { createBoard } from '../../api/service'
-import { Redirect } from 'react-router-dom';
+import { Redirect,useHistory } from 'react-router-dom';
 
 
 const CardBoards = ({ boards }) => {
@@ -12,7 +12,7 @@ const CardBoards = ({ boards }) => {
     //const [createdBoard, setCreatedBoard] = React.useState(null);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    //const history = useHistory();
+    const history = useHistory();
 
     
     const handleSubmit = async content => {
@@ -21,7 +21,9 @@ const CardBoards = ({ boards }) => {
             await createBoard(content);
 
             handleClose();
-            
+
+            history.push('/')
+                
         } catch (error) {
             setError(error);
         }
