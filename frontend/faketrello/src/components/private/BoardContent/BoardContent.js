@@ -26,8 +26,6 @@ const BoardContent = () => {
         
         await assignTaksinBoard(_id, _idTask );
 
-        window.location.reload();
-
     }
 
 
