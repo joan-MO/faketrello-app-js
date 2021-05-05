@@ -25,3 +25,14 @@ export const assignTaksinBoard = (_id, _idTask) => {
   const url = `${api_url}/boards/assignListTask/${_id}`;
   return client.put(url, {"list_tasks":_idTask})    
 };
+
+
+export const createCard = card => {
+  const url = `${api_url}/card-tasks`;
+  return client.post(url, card);    
+};
+
+export const assignCardInCard = (_id, _idCard) => {
+  const url = `${api_url}/list-tasks/assignCardTask/${_id}`;
+  return client.put(url, {"card_tasks":_idCard})    
+};
