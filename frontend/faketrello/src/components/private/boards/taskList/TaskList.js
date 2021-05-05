@@ -7,7 +7,7 @@ import Cards from '../Cards/Cards';
 
 
 
-const TaskList = ({taskList, onSubmit}) => {
+const TaskList = ({taskList, onSubmit, submit}) => {
     //const params = useParams();
     //const _id = params._id;
     const style_emptyCard = { width: "219.2px", height: "96px", float:'left',display:'flex', marginLeft:'10px', backgroundColor:'#ebecf0'};
@@ -24,17 +24,17 @@ const TaskList = ({taskList, onSubmit}) => {
 
     }
     */
-
+    
     return (
         <div>
         {taskList ? 
         <div style={{marginLeft:"15px"}} className="mt-5">
-            {taskList.map(task=>
+           {taskList.map(task=>
             <div key={task._id}>
                 <div className="card" style={!task.card_tasks.length ? style_emptyCard : style_notEmptyCard }>
                     <div className="card-body">
                         <p className="card-title title-board">{task.title}</p>
-                        <Cards task={task}/>
+                        <Cards task={task} onSubmit={submit}/>
                     </div>
                 </div>
             </div>
